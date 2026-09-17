@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loupe — image zoom with a gliding lens</title>
+  <meta name="description" content="Loupe is a zero-dependency image zoom: a lens that glides after your pointer, an inside-zoom mode, and pinch, pan and double-tap on touch. Keyboard accessible, MIT licensed.">
+  <meta property="og:title" content="Loupe — image zoom with a gliding lens">
+  <meta property="og:description" content="A lens that glides, pinch and pan on touch. Zero dependencies, MIT.">
+  <meta property="og:image" content="og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./loupe.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#">Loupe<span>.</span></a>
+    <nav aria-label="Project">
+      <span class="meta">MIT · 0 deps</span>
+      <a href="https://github.com/YagnikBarasiya23/loupe-image-zoom">GitHub</a>
+      <a href="https://www.yagnikbarasiya.com/components">More components</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Image zoom</p>
+      <h1 id="hero-title">Look <em>closer</em> without leaving the page.</h1>
+      <p class="lede">Hover the picture and a lens glides after your pointer. Switch to inside zoom and the whole frame magnifies where you point. On a phone, pinch, pan and double-tap. Press <kbd>Enter</kbd> to zoom with the keyboard.</p>
+    </section>
+
+    <section class="product" aria-labelledby="product-title">
+      <div class="gallery">
+        <figure class="frame">
+          <div class="loupe" id="viewer" data-zoom-src="images/dial-2400.jpg">
+            <img src="images/dial-1000.jpg" width="1000" height="1000" alt="Watch dial with a fine minute track and small engraved text">
+          </div>
+        </figure>
+        <div class="thumbs" role="radiogroup" aria-label="Choose a picture">
+          <button type="button" role="radio" aria-checked="true" data-src="images/dial-1000.jpg" data-zoom="images/dial-2400.jpg" data-alt="Watch dial with a fine minute track and small engraved text">
+            <img src="images/dial-1000.jpg" alt="" width="80" height="80">
+          </button>
+          <button type="button" role="radio" aria-checked="false" data-src="images/weave-1000.jpg" data-zoom="images/weave-2400.jpg" data-alt="Handloom cotton in a checked weave, with a small care label">
+            <img src="images/weave-1000.jpg" alt="" width="80" height="80">
+          </button>
+        </div>
+      </div>
+
+      <div class="details">
+        <p class="eyebrow">Sample product</p>
+        <h2 id="product-title">Loupe Chronometer</h2>
+        <p class="price">₹24,900</p>
+        <p class="copy">Every surface on this page is generated for the demo. Zoom in on the dial: the minute track has five ticks per second and there is a line of text too small to read without magnification.</p>
+
+        <div class="tune" aria-label="Zoom settings">
+          <div class="segmented" role="radiogroup" aria-label="Zoom mode">
+            <button type="button" role="radio" aria-checked="true" data-mode="lens">Lens</button>
+            <button type="button" role="radio" aria-checked="false" data-mode="inside">Inside</button>
+          </div>
+          <label>Magnification <output id="zoom-out">2.5×</output>
+            <input type="range" id="zoom" min="1.5" max="6" step="0.1" value="2.5">
+          </label>
+          <label>Lens size <output id="size-out">180 px</output>
+            <input type="range" id="size" min="100" max="320" step="10" value="180">
+          </label>
+          <label class="check"><input type="checkbox" id="wheel"> Scroll wheel changes zoom</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="usage" aria-labelledby="usage-title">
+      <h2 id="usage-title">Use it</h2>
+<pre><code>&lt;link rel="stylesheet" href="loupe.css"&gt;
+
+&lt;div id="viewer" data-zoom-src="watch-2400.jpg"&gt;
+  &lt;img src="watch-1000.jpg" alt="Watch dial"&gt;
+&lt;/div&gt;
+
+&lt;script type="module"&gt;
+  import Loupe from './loupe.js';
+  const viewer = new Loupe(document.querySelector('#viewer'), { zoom: 3 });
+&lt;/script&gt;</code></pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>MIT © 2026 <a href="https://www.yagnikbarasiya.com">Yagnik Barasiya</a> · demo images generated for this page</span>
+    <span>Respects reduced motion · keyboard and touch friendly</span>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

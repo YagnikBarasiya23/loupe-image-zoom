@@ -1,0 +1,65 @@
+/* Loupe — MIT © 2026 Yagnik Barasiya. The lens and image move with transform only. */
+.loupe {
+  --loupe-ring: rgba(255, 255, 255, .9);
+  --loupe-shadow: 0 18px 50px rgba(0, 0, 0, .35), 0 2px 8px rgba(0, 0, 0, .25);
+  position: relative;
+  display: block;
+  touch-action: pan-y;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+.loupe.is-active:not(.is-inside) { cursor: none; }
+.loupe.is-inside { overflow: hidden; }
+.loupe.is-inside.is-active { cursor: crosshair; }
+/* Zoomed by touch: the frame clips and the page no longer pans. */
+.loupe.is-touch { overflow: hidden; touch-action: none; }
+
+.loupe > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 0 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.loupe-lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: var(--loupe-shadow), inset 0 0 0 2px var(--loupe-ring);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+/* A soft highlight on the glass. */
+.loupe-lens::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .22), transparent 40%);
+  box-shadow: inset 0 0 0 2px var(--loupe-ring), inset 0 -10px 30px rgba(0, 0, 0, .25);
+}
+
+.loupe-lens-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  transform-origin: 0 0;
+}
+
+.loupe-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

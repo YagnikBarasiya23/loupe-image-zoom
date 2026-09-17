@@ -1,0 +1,26 @@
+{
+  "name": "loupe-image-zoom",
+  "version": "1.0.0",
+  "description": "Image zoom with a lens that glides after your pointer, an inside-zoom mode, and pinch, pan and double-tap on touch. Zero dependencies.",
+  "type": "module",
+  "main": "loupe.js",
+  "exports": {
+    ".": "./loupe.js",
+    "./loupe.css": "./loupe.css"
+  },
+  "files": ["loupe.js", "loupe.css"],
+  "keywords": ["image-zoom", "magnifier", "loupe", "pinch-zoom", "product-image", "vanilla-js"],
+  "author": "Yagnik Barasiya (https://www.yagnikbarasiya.com)",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/YagnikBarasiya23/loupe-image-zoom.git" },
+  "homepage": "https://yagnikbarasiya23.github.io/loupe-image-zoom/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}
